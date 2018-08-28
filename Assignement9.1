@@ -1,0 +1,30 @@
+1. If Z is norm (mean = 0, sd = 1)
+Find P(Z > 2.64)
+Ans: mean=0
+       SD=1
+        n=2.64
+       xbar=1
+       z=(xbar - mean)/ (SD/sqrt(n))
+       z
+       z * pnorm(-abs(z)
+
+Find P(|Z| > 1.39)
+Ans: Z <- rnorm(1.39,0,1)
+        Z1<- abs(Z)
+        mean(Z1<1)
+
+#2.
+Ans:  data(UCBAdmissions)
+## Data aggregated over departments
+apply(UCBAdmissions, c(1, 2), sum)
+mosaicplot(apply(UCBAdmissions, c(1, 2), sum),
+           main = "Student admissions at UC Berkeley")
+## Data for individual departments
+opar <- par(mfrow = c(2, 3), oma = c(0, 0, 2, 0))
+for(i in 1:6)
+  mosaicplot(UCBAdmissions[,,i],
+    xlab = "Admit", ylab = "Sex",
+    main = paste("Department", LETTERS[i]))
+mtext(expression(bold("Student admissions at UC Berkeley")),
+      outer = TRUE, cex = 1.5)
+par(opar)
